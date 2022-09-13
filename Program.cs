@@ -1,4 +1,4 @@
-﻿//Задача 47. Задайте двумерный массив размером m×n, заполненный случайными вещественными числами.
+﻿ //Задача 47. Задайте двумерный массив размером m×n, заполненный случайными вещественными числами.
 
 double[,] Fill2DArrray(int row, int column, int minValue, int maxValue)
 {
@@ -44,7 +44,12 @@ Print2DArray(massive);
 //****************************************************************************
 //Задача 50. Напишите программу, которая на вход принимает позиции элемента в двумерном массиве, 
 //и возвращает значение этого элемента или же указание, что такого элемента нет.
-//на семинаре решили искать элемент и выводить его позицию в массиве
+//Например, задан массив:
+//1 4 7 2
+//5 9 2 3
+//8 4 2 4
+//17 -> такого числа в массиве нет
+//на семинаре решили искать именно элемент в массиве (как в примере)
 
 int[,] Fill2DArrrayInt(int row, int column, int minValue, int maxValue)
 {
@@ -82,8 +87,9 @@ int n = int.Parse(Console.ReadLine());
 int[,] massiveInt = Fill2DArrrayInt(m, n, 0, 10);
 Print2DArrayInt(massiveInt);
 
-Console.WriteLine("Введите искомый элемент -> ");
+Console.WriteLine("Введите искомое число -> ");
 int el = int.Parse(Console.ReadLine());
+bool flag = true;
 
 for (int i = 0; i < massiveInt.GetLength(0); i++)
 {
@@ -91,12 +97,15 @@ for (int i = 0; i < massiveInt.GetLength(0); i++)
     {
         if (massiveInt[i, j] == el)
         {
-            Console.WriteLine($"Элемент {el} найден на позиции [{i},{j}]");
-            return;
+            Console.WriteLine($"Число {el} найдено на позиции [{i},{j}]");
+            flag = false;
         }
     }
 }
-Console.WriteLine($"Элемент {el} не найден в массиве");
+if(flag)
+{
+    Console.WriteLine($"Число {el} не найдено в массиве");
+}
 
 
 
